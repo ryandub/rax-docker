@@ -30,16 +30,17 @@ unless node['rax-docker']['image'].empty?
   if node['rax-docker']['container_port'].nil?
     prt = nil
   else
-    prt = "#{node['rax-docker']['host_port']}:\
-          #{node['rax-docker']['container_port']}"
+    # rubocop:disable LineEndConcatenation
+    prt = "#{node['rax-docker']['host_port']}:" +
+          "#{node['rax-docker']['container_port']}"
   end
 
   docker_container node['rax-docker']['image'] do
-    command "#{node['rax-docker']['command']['name']} \
-            #{node['rax-docker']['command']['params']}"
+    command "#{node['rax-docker']['command']['name']} " +
+            "#{node['rax-docker']['command']['params']}"
     cmd_timeout node['docker']['container_cmd_timeout']
     port prt
     detach true
   end
-
+  # rubocop:enable LineEndConcatenation
 end
