@@ -13,7 +13,7 @@ Vagrant.configure('2') do |config|
     }
 
     chef.run_list = [
-        'recipe[rax-docker::aufs]',
+        'recipe[rax-docker::setup]',
         'recipe[docker::default]',
         'recipe[rax-docker::default]'
     ]

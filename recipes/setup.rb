@@ -1,7 +1,7 @@
 # Encoding: utf-8
 #
 # Cookbook Name:: rax-docker
-# Recipe:: aufs
+# Recipe:: setup
 #
 # Copyright 2014, Rackspace Hosting
 #
@@ -17,6 +17,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+
+if node['platform_family'] == 'debian'
+  include_recipe 'apt'
+end
 
 if node['platform'] == 'ubuntu'
   package "linux-image-extra-#{node['kernel']['release']}"
