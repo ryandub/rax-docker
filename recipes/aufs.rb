@@ -18,7 +18,7 @@
 # limitations under the License.
 #
 
-if node['platform'] == 'ubuntu' && node['platform_version'] == '13.10'
+if node['platform'] == 'ubuntu'
   package "linux-image-extra-#{node['kernel']['release']}"
 
   bash 'install_aufs_module' do
