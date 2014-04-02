@@ -18,9 +18,7 @@
 # limitations under the License.
 #
 
-if node['platform_family'] == 'debian'
-  include_recipe 'apt'
-end
+include_recipe 'apt' if node['platform_family'] == 'debian'
 
 if node['platform'] == 'ubuntu'
   package "linux-image-extra-#{node['kernel']['release']}"
